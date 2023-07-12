@@ -22,21 +22,19 @@ router.get('/:id', (req, res) => {
         res.status(400).json(`no person id ${req.params.id} found `)
     }
 });
+
 // create person
 router.post('/', (req, res) => {
-    const newPerson = {
-        id: uuidv4(),
-        name: req.body.name,
-        age: req.body.age,
-        sex: req.body.sex
-    }
-    if (!newPerson.name || !newPerson.age || !newPerson.sex) {
-        return res.status(400).json({ msg: 'complete the data' })
-    }
-    persons.push(newPerson)
+    const { name, age, sex } = req.body;
 
-    res.json(persons)
-})
+    if (!name || !age || !sex) return res.status(400).json({ msg: 'Incomplete data' });
+
+    const newPerson = { id: uuidv4(), name, age, sex };
+    persons.push(newPerson);
+
+    res.json(persons);
+});
+
 
 //person update
 router.put('/:id', (req, res) => {
@@ -46,10 +44,10 @@ router.put('/:id', (req, res) => {
         const updatePerson = req.body
         persons.filter(person => {
             if (person.id === parseInt(req.params.id)) {
-                person.name = updatePerson.name ? updatePerson.name : person.name
-                person.age = updatePerson.age ? updatePerson.age : person.age
-                person.sex = updatePerson.sex ? updatePerson.sex : person.sex
-                res.json({ msg: 'asd', person })
+                person.name = updatePerson.name || person.name
+                person.age = updatePerson.age || person.age
+                person.sex = updatePerson.sex || person.sex
+                res.json({ msg: `Person id: ${person.id} updated `, person })
 
             }
         });
@@ -75,5 +73,4 @@ router.delete('/:id', (req, res) => {
         res.status(400).json(`no person id ${req.params.id} found `)
     }
 });
-console.log(persons)
 export default router
