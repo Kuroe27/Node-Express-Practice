@@ -2,16 +2,16 @@
   "name": "nodepress",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.js",
+  "main": "index.js",
   "type": "module",
   "engines": {
     "node": "14.x"
   },
- "scripts": {
-  "start": "node api/index",
-  "dev": "nodemon api/index"
-},
-
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+    
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
