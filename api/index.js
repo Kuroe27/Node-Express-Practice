@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'path';
 import url from 'url';
-import request from './middleware/middleware.js';
-import router from './routes/api/persons.js';
+import request from '../middleware/middleware.js';
+import router from '../routes/api/persons.js';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
