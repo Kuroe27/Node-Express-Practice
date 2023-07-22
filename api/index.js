@@ -19,7 +19,7 @@ app.use(request)
 
 
 //static folder
-app.use(express.static(path.join(__dirname, 'test')))
+app.use(express.static(path.join(__dirname, '../test')))
 
 
 
